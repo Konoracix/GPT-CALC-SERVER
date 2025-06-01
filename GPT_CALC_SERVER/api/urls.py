@@ -1,6 +1,7 @@
 from django.urls import path
-from .views import ChatGPTView
+from .views import sendRequest, getAllDevices
 
 urlpatterns = [
-    path('chat/', ChatGPTView.as_view(), name='chat'),
+    path('chat/<str:id>', sendRequest, name='chat'),
+		path('devices', getAllDevices),
 ]
