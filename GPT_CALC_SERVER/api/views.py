@@ -4,6 +4,7 @@ from rest_framework.permissions import IsAuthenticated
 from openai import OpenAI
 from rest_framework.decorators import api_view
 from api.serializers import DeviceSerializer 
+from rest_framework.exceptions import NotFound
 import os
 from api.models import Device
 
@@ -50,3 +51,12 @@ def getAllDevices(request):
 			serializer.save()
 			return Response(serializer.data)
 		return Response(serializer.errors)
+
+@api_view(['GET'])
+def getOneDevice(request, id):
+	try:
+		device = Device.objects.get(id=id)
+		serialier = DeviceSerializer(device)
+		return Response(serialier.data)
+	except:
+		raise NotFound(detail=f'Device with id: {id} Not Found')
