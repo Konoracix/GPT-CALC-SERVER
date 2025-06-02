@@ -17,7 +17,7 @@ def sendRequest(request, id):
 		device.number_of_requests += 1
 		device.save()
 	except:
-		return Response({"error": "Device not found"}, status=404)
+		raise NotFound(detail=f'Device with id: {id} Not Found')
 
 	prompt = request.data.get("prompt")
 
