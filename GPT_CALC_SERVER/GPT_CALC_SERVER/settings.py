@@ -42,7 +42,17 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 		'rest_framework',
     'api',
+    'drf_yasg',
 ]
+
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "api.auth.DeviceAuthentication",
+    ],
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.IsAuthenticated",
+    ]
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

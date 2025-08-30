@@ -1,8 +1,10 @@
 from django.urls import path
-from .views import sendRequest, getAllDevices, getOneDevice
+from api.views import GPTManagerViewSet, DeviceViewSet, DeviceOnlyViewSet
+from rest_framework import routers
 
-urlpatterns = [
-    path('chat/<str:id>', sendRequest, name='chat'),
-		path('devices', getAllDevices),
-		path('devices/<str:id>', getOneDevice),
-]
+router = routers.SimpleRouter()
+router.register("chat", GPTManagerViewSet, basename="chat")
+router.register("device", DeviceViewSet, basename="device")
+router.register("auth", DeviceOnlyViewSet, basename="auth")
+
+urlpatterns = router.urls
