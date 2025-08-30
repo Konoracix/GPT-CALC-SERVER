@@ -5,6 +5,7 @@ from rest_framework.decorators import action
 from rest_framework.viewsets import GenericViewSet
 from openai import OpenAI
 from api.models import Device, ChatAnswer
+import httpx 
 from api.serializers import PromptSerializer, ChatAnswerSerializer
 from api.permissions import IsDeviceAuthenticated
 from drf_yasg.utils import swagger_auto_schema
