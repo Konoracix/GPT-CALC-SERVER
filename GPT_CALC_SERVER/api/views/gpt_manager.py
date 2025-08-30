@@ -49,7 +49,7 @@ class GPTManagerViewSet(GenericViewSet):
 
 		client = OpenAI(
    			api_key=os.environ.get("OPENAI_KEY"),
-    		http_client=httpx.Client(proxies=None)
+    		http_client=httpx.Client()
 		)
 
 		try:
