@@ -14,7 +14,6 @@ chardet==4.0.0
 charset-normalizer==3.3.2
 chess==1.11.2
 click==8.0.3
-cloud-init==25.1.4
 colorama==0.4.4
 command-not-found==0.3
 configobj==5.0.6
