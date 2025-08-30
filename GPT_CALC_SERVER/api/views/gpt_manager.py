@@ -46,7 +46,10 @@ class GPTManagerViewSet(GenericViewSet):
 				status=status.HTTP_500_INTERNAL_SERVER_ERROR
 			)
 
-		client = OpenAI(api_key=OPENAI_KEY)
+		client = OpenAI(
+   			api_key=os.environ.get("OPENAI_KEY"),
+    		http_client=httpx.Client(proxies=None)
+		)
 
 		try:
 			device = Device.objects.get(id=pk)
