@@ -25,3 +25,10 @@ class DeviceViewSet(GenericViewSet):
 		serializer = self.get_serializer(device, many=True)
 		return Response(serializer.data)
 
+	@swagger_auto_schema()
+	def create(self, request):
+		serializer = self.get_serializer(data=request.data)
+		if serializer.is_valid():
+			serializer.save()
+			return Response(serializer.data, status=status.HTTP_201_CREATED)
+		return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
